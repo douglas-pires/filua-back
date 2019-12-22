@@ -1,4 +1,4 @@
-module.exports = ['user'].reduce(
+module.exports = ['index', 'institution', 'user'].reduce(
   (result, item) => {
     const { resolvers, typeDefs } = require('../schema/' + item);
     if (resolvers) result.resolvers.push(resolvers);

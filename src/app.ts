@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoConnection from './db';
 import { ApolloServer } from 'apollo-server-express';
 import errors from './hooks/errors';
+import dataSources from './data-sources';
 
 const { typeDefs, resolvers } = require('./hooks/schema');
 
@@ -17,6 +18,7 @@ const server = new ApolloServer({
   introspection: true,
   typeDefs,
   resolvers,
+  dataSources,
   formatError: (err) => {
     return errors.capture(err);
   },

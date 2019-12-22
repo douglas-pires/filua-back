@@ -1,25 +1,61 @@
-import { importSchema } from 'graphql-import';
-import Institution from './institution';
+import Institution from '../../db/schema/institution';
+import gql from 'graphql-tag';
 
-export const typeDefs = importSchema('src/schema/user/institution.graphql');
+export const typeDefs = gql`
+  type Account {
+    bank: String!
+    agency: String!
+    account: String!
+  }
+
+  input AccountInput {
+    bank: String!
+    agency: String!
+    account: String!
+  }
+
+  input InstitutionInfoInput {
+    name: String!
+    about: String
+    accounts: [AccountInput]!
+  }
+
+  type InstitutionInfo {
+    id: ID
+    name: String!
+    about: String
+    accounts: [Account]!
+  }
+
+  input InstitutionUpdateInput {
+    id: ID
+    name: String!
+    about: String
+    accounts: [AccountInput]!
+  }
+
+  extend type Query {
+    institutions: [InstitutionInfo]
+  }
+
+  extend type Mutation {
+    addInstitution(input: InstitutionInfoInput!): InstitutionInfo
+    removeInstitution(input: ID!): InstitutionInfo
+    updateInstitution(input: InstitutionUpdateInput!): InstitutionInfo
+  }
+`;
 
 export const resolvers = {
   Query: {
-    institutions(_, { input }) {
-      const institutions = Institution.find();
-
-      console.log(institutions);
-    },
+    institutions: (_, __, { dataSources }) =>
+      dataSources.institution.getInstitutions(),
   },
-  Mutations: {
-    addInstitution(_, { input }) {
-      const {  } = input
-    },
-    removeInstitution(_, { input }) {
-
-    },
-    updateInstitution(_, { input }) {
-
-    },
-  }
+  Mutation: {
+    addInstitution: (_, { input }, { dataSources }) =>
+      dataSources.institution.addInstitution(input),
+    removeInstitution: (_, { input }, { dataSources }) =>
+      dataSources.institution.removeInstitution(input),
+    updateInstitution: (_, { input }, { dataSources }) =>
+      dataSources.institution.updateInstitution(input),
+  },
 };

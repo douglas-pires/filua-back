@@ -1,7 +1,7 @@
 import { Collection, Document } from 'mongoose';
 import { DataSource } from 'apollo-datasource';
 
-export default class DataSourceMongo extends DataSource<any> {
+export default class DataSourceMongo extends DataSource {
   constructor(private collection: Collection) {
     super();
   }

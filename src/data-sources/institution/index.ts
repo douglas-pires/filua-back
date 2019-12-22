@@ -1,9 +1,14 @@
 import DataSourceMongo from '../base';
-import Institution from 'src/db/schema/institution';
+import Institution from '../../db/schema/institution';
 
 export default class InstitutionDataSource extends DataSourceMongo {
   getInstitutions() {
     return this.find();
+  }
+
+  getOneInstitution(input) {
+    const { id } = input;
+    return this.findOne({ _id: id });
   }
 
   addInstitution(input) {

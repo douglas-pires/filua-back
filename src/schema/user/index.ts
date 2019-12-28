@@ -35,7 +35,7 @@ export const typeDefs = gql`
 export const resolvers = {
   Query: {
     login: (_, { input }, { dataSources }) => dataSources.user.login(input),
-    user: (_, { input }, { dataSources }) => dataSources.user.getUser(input),
+    user: (_, input, { dataSources }) => dataSources.user.getUser(input),
   },
   Mutation: {
     register: (_, { input }, { dataSources }) =>

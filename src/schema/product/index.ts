@@ -6,7 +6,7 @@ export const typeDefs = gql`
     name: String
     image: String
     price: String
-    categoryTree: String
+    categoryTree: [String]
     partnerUrl: String
     partner: String
   }
@@ -15,13 +15,13 @@ export const typeDefs = gql`
     name: String
     image: String
     price: String
-    categoryTree: String
+    categoryTree: [String]
     partnerUrl: String
     partner: String
   }
 
   extend type Query {
-    products: Product
+    products: [Product]
   }
 
   extend type Mutation {

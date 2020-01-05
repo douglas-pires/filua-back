@@ -10,8 +10,10 @@ export default class DataSourceMongo extends DataSource {
     return this.model.findOne({ _id: id });
   }
 
-  protected async find() {
-    return this.model.find({});
+  protected async find({ first, after } = { first: 24, after: null }) {
+    let options = null;
+    if (after) options = { _id: { $gt: after } };
+    return this.model.find(options).limit(first);
   }
 
   protected save(document: Document, callback?) {

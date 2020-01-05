@@ -2,8 +2,8 @@ import DataSourceMongo from '../base';
 import Product from '../../db/schema/product';
 
 export default class ProductDataSource extends DataSourceMongo {
-  getProducts() {
-    return this.find();
+  getProducts({ first, after }) {
+    return this.find({ first, after });
   }
 
   getOneProduct(input) {

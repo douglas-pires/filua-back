@@ -21,7 +21,7 @@ export const typeDefs = gql`
   }
 
   extend type Query {
-    products: [Product]
+    products(first: Int, after: ID): [Product]
   }
 
   extend type Mutation {
@@ -33,7 +33,8 @@ export const typeDefs = gql`
 
 export const resolvers = {
   Query: {
-    products: (_, __, { dataSources }) => dataSources.product.getProducts(),
+    products: (_, { first, after }, { dataSources }) =>
+      dataSources.product.getProducts({ first, after }),
   },
   Mutation: {
     addProduct: (_, { input }, { dataSources }) =>

@@ -2,20 +2,21 @@ import gql from 'graphql-tag';
 
 export const typeDefs = gql`
   type Account {
-    bank: String!
+    bankName: String!
     agency: String!
     account: String!
   }
 
   input AccountInput {
-    bank: String!
+    bankName: String!
     agency: String!
     account: String!
   }
 
   input InstitutionInfoInput {
     name: String!
-    about: String
+    about: String!
+    website: String
     accounts: [AccountInput]!
   }
 
@@ -35,6 +36,7 @@ export const typeDefs = gql`
 
   extend type Query {
     institutions: [InstitutionInfo]
+    getInstitution(name: String!): InstitutionInfo
   }
 
   extend type Mutation {
@@ -48,6 +50,8 @@ export const resolvers = {
   Query: {
     institutions: (_, __, { dataSources }) =>
       dataSources.institution.getInstitutions(),
+    getInstitution: (_, { name }, { dataSources }) =>
+      dataSources.institution.getInstitutionByName(name),
   },
   Mutation: {
     addInstitution: (_, { input }, { dataSources }) =>

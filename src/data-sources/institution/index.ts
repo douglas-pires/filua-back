@@ -6,6 +6,10 @@ export default class InstitutionDataSource extends DataSourceMongo {
     return this.find();
   }
 
+  getInstitutionByName(name) {
+    return this.findBy({ name });
+  }
+
   getOneInstitution(input) {
     const { id } = input;
     return this.findOne({ _id: id });

@@ -10,6 +10,10 @@ export default class DataSourceMongo extends DataSource {
     return this.model.findOne({ _id: id });
   }
 
+  protected async findBy(filter) {
+    return this.model.findOne(filter);
+  }
+
   protected async find({ first, after } = { first: 24, after: null }) {
     let options = null;
     if (after) options = { _id: { $gt: after } };
@@ -17,7 +21,7 @@ export default class DataSourceMongo extends DataSource {
   }
 
   protected save(document: Document, callback?) {
-    return this.model.findOneAndUpdate(document, callback);
+    return document.save();
   }
 
   protected updateOne(filter, update, callback?) {

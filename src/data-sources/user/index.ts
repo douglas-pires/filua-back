@@ -17,6 +17,9 @@ export default class UserDataSource extends DataSource {
     if (user.comparePassword(password)) {
       user.createTokens();
       return {
+        id: user.id,
+        name: user.name,
+        email: user.email,
         token: user.token,
         refreshToken: user.refreshToken,
       };

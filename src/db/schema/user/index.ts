@@ -7,10 +7,9 @@ const encrypt = (plainText: string, saltRounds = 10) =>
   bcrypt.hashSync(plainText, saltRounds);
 
 export interface IUser extends Document {
-  username: string;
+  name: string;
   password: string;
   confirmPassword: string;
-  fullName: string;
   email: string;
   token: string;
   refreshToken: string;
@@ -20,26 +19,21 @@ export interface IUser extends Document {
 }
 
 const UserSchema: Schema<IUser> = new mongoose.Schema({
-  username: {
-    type: String,
-    required: [true, 'Usuário obrigatório'],
-    unique: true,
-  },
   password: {
     type: String,
-    required: [true, 'Senha obrigatória'],
+    required: [true, 'Password is required'],
   },
   confirmPassword: {
     type: String,
-    required: [true, 'Confirmação de senha obrigatória'],
+    required: [true, 'Password confirmation is required'],
   },
-  fullName: {
+  name: {
     type: String,
-    required: [true, 'Nome obrigatório'],
+    required: [true, 'Name is required'],
   },
   email: {
     type: String,
-    required: [true, 'Email obrigatório'],
+    required: [true, 'Email is required'],
     unique: true,
   },
   token: {
@@ -59,7 +53,7 @@ UserSchema.pre<IUser>('save', function(next) {
   this.password = encrypt(this.password);
 
   if (!this.comparePassword(this.confirmPassword))
-    throw new Error('A confirmação da senha deve ser igual à senha');
+    throw new Error('The confirmation must be the same as the password');
 
   next();
 });
@@ -70,8 +64,7 @@ UserSchema.methods.comparePassword = function(confirmationPassword) {
 
 UserSchema.methods.createTokens = function() {
   const tokenData = {
-    username: this.username,
-    fullName: this.fullName,
+    name: this.name,
     email: this.email,
   };
 

@@ -2,11 +2,10 @@ import { gql } from 'apollo-server-express';
 
 export const typeDefs = gql`
   input UserInfoInput {
-    username: String!
+    name: String!
+    email: String!
     password: String!
     confirmPassword: String!
-    fullName: String!
-    email: String!
   }
 
   input UserInfoLoginInput {
@@ -16,7 +15,8 @@ export const typeDefs = gql`
 
   type UserInfo {
     id: ID
-    username: String
+    name: String
+    email: String
     password: String
     token: String
     refreshToken: String

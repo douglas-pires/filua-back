@@ -1,0 +1,5 @@
+module.exports = {
+  MONGO_DB_CONNECTION: process.env.MONGO_DB_CONNECTION,
+  AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+};

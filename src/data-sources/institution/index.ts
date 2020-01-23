@@ -16,11 +16,12 @@ export default class InstitutionDataSource extends DataSourceMongo {
   }
 
   addInstitution(input) {
-    const { name, about, accounts } = input;
+    const { name, about, accounts, image } = input;
 
     const institution = new Institution({
       name,
       about,
+      image,
       accounts,
     });
 
@@ -34,7 +35,7 @@ export default class InstitutionDataSource extends DataSourceMongo {
   }
 
   updateInstitution(input) {
-    const { id, name, about, accounts } = input;
+    const { id, name, about, accounts, image } = input;
 
     return this.updateOne(
       { _id: id },
@@ -42,6 +43,7 @@ export default class InstitutionDataSource extends DataSourceMongo {
         name,
         about,
         accounts,
+        image,
       },
     );
   }

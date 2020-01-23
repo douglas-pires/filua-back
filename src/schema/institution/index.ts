@@ -17,6 +17,7 @@ export const typeDefs = gql`
     name: String!
     about: String!
     website: String
+    image: String
     accounts: [AccountInput]!
   }
 
@@ -24,6 +25,7 @@ export const typeDefs = gql`
     id: ID
     name: String!
     about: String
+    image: String
     accounts: [Account]!
   }
 
@@ -31,6 +33,7 @@ export const typeDefs = gql`
     id: ID
     name: String!
     about: String
+    image: String
     accounts: [AccountInput]!
   }
 

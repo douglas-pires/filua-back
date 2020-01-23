@@ -12,7 +12,7 @@ export default class UserDataSource extends DataSource {
     const { email, password } = input;
     const user = (await User.findOne({ email })) as IUser;
 
-    if (!user) return { message: 'Usuário não encontrado' };
+    if (!user) return { message: 'User not found' };
 
     if (user.comparePassword(password)) {
       user.createTokens();
@@ -22,22 +22,21 @@ export default class UserDataSource extends DataSource {
       };
     }
 
-    throw new Error('Usuário inválido');
+    throw new Error('Invalid user');
   }
 
   async register(input: IUser) {
-    const { fullName, username, email, password, confirmPassword } = input;
+    const { name, email, password, confirmPassword } = input;
 
     const userExists = await User.findOne({
       email,
     });
 
-    if (userExists) throw new Error('O usuário já existe');
+    if (userExists) throw new Error('The user already exists');
 
     const user = new User({
-      fullName,
+      name,
       email,
-      username,
       password,
       confirmPassword,
     }) as IUser;

@@ -3,7 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 const InstitutionSchema: Schema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Nome da instituição obrigatório'],
+    required: [true, `Institution's name required`],
     unique: true,
   },
   about: {
@@ -11,6 +11,9 @@ const InstitutionSchema: Schema = new mongoose.Schema({
   },
   accounts: {
     type: Array,
+  },
+  image: {
+    type: String,
   },
 });
 

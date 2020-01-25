@@ -9,6 +9,8 @@ import cors from 'cors';
 
 const { typeDefs, resolvers } = require('./hooks/schema');
 
+const a = null;
+
 dotenv.config();
 mongoConnection();
 

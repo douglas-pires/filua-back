@@ -9,7 +9,7 @@ services:
 
   filuaback:
     build:
-      dockerfile: docker/Dockerfile
+      dockerfile: Dockerfile
       network: host
     image: filua-back:latest
     links:

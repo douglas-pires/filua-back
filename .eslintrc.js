@@ -8,7 +8,6 @@ module.exports = {
     parser: '@typescript-eslint/parser'
   },
   extends: [
-    '@nuxtjs',
     'prettier',
     'prettier/vue',
     'plugin:prettier/recommended',

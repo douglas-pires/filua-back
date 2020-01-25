@@ -29,4 +29,4 @@ jobs:
         env:
           DO_USER: ${{ secrets.DO_USER }}
           DO_IP: ${{ secrets.DO_IP }}
-        run: ssh $DO_USER@$DO_IP "./deploy_app.sh"
+        run: ssh circleci@64.227.55.167 "./deploy_app.sh"

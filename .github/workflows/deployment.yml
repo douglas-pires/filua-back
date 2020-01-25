@@ -16,7 +16,7 @@ jobs:
       uses: actions/checkout@master
 
     - name: Build container image
-      run: docker build -t andrewsomething/static-example:$(echo $GITHUB_SHA | head -c7) .
+      run: docker build -t douglaspires/filua-back:latest
 
     - name: Docker Login
       env:

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-export interface IProduct {
+export interface Product {
   name: string;
   image: string;
   price: string;
@@ -9,7 +9,7 @@ export interface IProduct {
   partner: string;
 }
 
-const ProductSchema: Schema<IProduct> = new mongoose.Schema({
+const ProductSchema: Schema<Product> = new mongoose.Schema({
   name: {
     type: String,
     required: true,

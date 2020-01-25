@@ -29,7 +29,6 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      name: Install
       - run: npm install
 
       - save_cache:
@@ -37,8 +36,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      name: Test
       - run: npm test
 
-      name: Deployment
       - run: ssh -oStrictHostKeyChecking=no -v $DROPLET_USER@$DROPLET_IP “./deploy_project.sh”

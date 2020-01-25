@@ -11,7 +11,7 @@
   "dependencies": {
     "apollo-datasource-mongodb": "^0.2.1",
     "apollo-server-express": "^2.9.14",
-    "aws-sdk": "^2.601.0",
+    "aws-sdk": "^2.609.0",
     "bcrypt": "^3.0.7",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -43,6 +43,6 @@
     "eslint-plugin-standard": "^4.0.1",
     "prettier-eslint": "^9.0.1",
     "ts-node": "^8.5.4",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.5"
   }
 }

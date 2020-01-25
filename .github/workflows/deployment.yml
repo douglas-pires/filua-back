@@ -31,8 +31,6 @@ jobs:
           DO_IP: ${{ secrets.DO_IP }}
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
-          echo "$DEPLOY_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 700 ~/.ssh/id_rsa
           eval "$(ssh-agent -s)"
-          ssh-add - <<< $DEPLOY_KEY
+          ssh-add - <<< "$DEPLOY_KEY"
           ssh -o StrictHostKeyChecking=no $DO_USER@$DO_IP "./deploy_app.sh"

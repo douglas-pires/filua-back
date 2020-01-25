@@ -42,7 +42,4 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
     - run: npm ci
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GPR_TOKEN }}
-        CYPRESS_INSTALL_BINARY: 0
-    - run: npx eslint . --ext .js,.vue
+    - run: npx eslint . --ext .js,.ts

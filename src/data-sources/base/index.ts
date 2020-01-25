@@ -20,7 +20,7 @@ export default class DataSourceMongo extends DataSource {
     return this.model.find(options).limit(first);
   }
 
-  protected save(document: Document, callback?) {
+  protected save(document: Document) {
     return document.save();
   }
 

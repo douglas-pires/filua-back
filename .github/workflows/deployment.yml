@@ -31,4 +31,7 @@ jobs:
       run: docker push ${{ secrets.DOCKER_REPOSITORY }}
 
     - name: Deploy Application
-      run: ssh ${{ secrets.DO_USER }}@${{ secrets.DO_DNS }} "./deploy_app.sh"
+      env:
+        DO_USER: ${{ secrets.DO_USER }}
+        DO_DNS: ${{ secrets.DO_IP }}
+      run: ssh $DO_USER@$DO_IP "./deploy_app.sh"

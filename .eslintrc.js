@@ -8,12 +8,14 @@ module.exports = {
     parser: 'babel-eslint',
     sourceType: 'module',
     ecmaVersion: 2019,
-    ecmaFeatures: {
-      modules: true,
-    },
   },
-  extends: ['prettier', 'plugin:prettier/recommended'],
-  plugins: ['prettier'],
+  extends: [
+    'prettier',
+    'plugin:prettier/recommended',
+    'eslint:recommended',
+    'prettier',
+  ],
+  plugins: ['prettier', 'babel'],
   // add your custom rules here
   rules: {},
 };

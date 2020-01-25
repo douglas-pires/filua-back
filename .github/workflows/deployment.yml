@@ -6,29 +6,27 @@ on:
       - master
 
 jobs:
-
   build:
     name: Build, push, and deploy
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout master
+        uses: actions/checkout@master
 
-    - name: Checkout master
-      uses: actions/checkout@master
+      - name: Build container image
+        run: docker build -t douglaspires/filua-back:latest .
 
-    - name: Build container image
-      run: docker build -t douglaspires/filua-back:latest
+      - name: Docker Login
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-    - name: Docker Login
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - name: Push image to Docker Hub
+        run: docker push ${{ secrets.DOCKER_REPOSITORY }}
 
-    - name: Push image to Docker Hub
-      run: docker push ${{ secrets.DOCKER_REPOSITORY }}
-
-    - name: Deploy Application
-      env:
-        DO_USER: ${{ secrets.DO_USER }}
-        DO_DNS: ${{ secrets.DO_IP }}
-      run: ssh $DO_USER@$DO_IP "./deploy_app.sh"
+      - name: Deploy Application
+        env:
+          DO_USER: ${{ secrets.DO_USER }}
+          DO_DNS: ${{ secrets.DO_IP }}
+        run: ssh $DO_USER@$DO_IP "./deploy_app.sh"

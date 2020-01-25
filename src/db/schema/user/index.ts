@@ -6,7 +6,7 @@ import path from 'path';
 const encrypt = (plainText: string, saltRounds = 10) =>
   bcrypt.hashSync(plainText, saltRounds);
 
-export interface IUser extends Document {
+export interface User extends Document {
   name: string;
   password: string;
   confirmPassword: string;
@@ -18,7 +18,7 @@ export interface IUser extends Document {
   createTokens: () => any;
 }
 
-const UserSchema: Schema<IUser> = new mongoose.Schema({
+const UserSchema: Schema<User> = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Password is required'],

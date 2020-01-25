@@ -42,6 +42,6 @@ jobs:
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
             docker push douglaspires/filua-back:latest
       - run:
-        name: Deploy app to Digital Ocean Server via Docker
-        command: |
-          ssh -o StrictHostKeyChecking=no $CIRCLE_CI_USER@$FILUA_DNS "/bin/bash ./deploy_app.sh"
+          name: Deploy app to Digital Ocean Server via Docker
+          command: |
+            ssh -o StrictHostKeyChecking=no $CIRCLE_CI_USER@$FILUA_DNS "/bin/bash ./deploy_app.sh"

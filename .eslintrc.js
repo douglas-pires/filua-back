@@ -6,6 +6,7 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint',
+    sourceType: 'module',
     ecmaVersion: 2019,
     ecmaFeatures: {
       modules: true,

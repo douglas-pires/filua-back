@@ -10,7 +10,7 @@ services:
     build:
       dockerfile: Dockerfile
       network: host
-    image: filua-back:latest
+    image: douglaspires/filua-back:latest
     links:
       - db
     depends_on:

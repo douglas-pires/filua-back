@@ -10,8 +10,7 @@ RUN npm install -g nodemon
 RUN npm install -g typescript
 
 COPY . .
-RUN npm run build
 
 EXPOSE 3000
 
-CMD [ "node", "./dist/app.js" ] // start server inside container
+CMD [ "npm", "run", "production" ] // start server inside container

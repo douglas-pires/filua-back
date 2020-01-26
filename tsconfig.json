@@ -8,7 +8,6 @@
     "declaration": false,
     "allowJs": true,
     "noImplicitAny": false,
-    "moduleResolution": "node",
     "noUnusedLocals": true,
     "removeComments": true,
     "preserveConstEnums": true,

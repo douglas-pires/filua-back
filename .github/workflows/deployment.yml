@@ -32,8 +32,7 @@ jobs:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           mkdir -p ~/.ssh
-          echo "$DEPLOY_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+          echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
           chmod 700 ~/.ssh/id_rsa
-          eval "$(ssh-agent -s)"
-          ssh-add - <<< ~/.ssh/id_rsa
-          ssh -o StrictHostKeyChecking=no $DO_USER@$DO_IP "./deploy_app.sh"
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          ssh -o StrictHostKeyChecking=no  $DO_USER@$DO_IP "./deploy_app.sh"

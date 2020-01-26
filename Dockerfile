@@ -13,4 +13,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "production" ] // start server inside container
+CMD [ "npm", "run", "production" ]

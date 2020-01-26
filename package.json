@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env PORT=3000 NODE_ENV=development nodemon",
     "build": "tsc",
-    "production": "tsc && cross-env PORT=3000 NODE_ENV=production node dist/app.js"
+    "production": "cross-env PORT=3000 NODE_ENV=production node dist/app.js"
   },
   "author": "Douglas Pires",
   "license": "ISC",

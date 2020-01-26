@@ -2,7 +2,8 @@
   "compileOnSave": true,
   "compilerOptions": {
     "target": "es2016",
-    "module": "commonjs",
+    "module": "commonJS",
+    "moduleResolution": "node",
     "strict": false,
     "skipLibCheck": true,
     "declaration": false,
@@ -15,7 +16,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "outDir": "dist",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "lib": ["es2015", "esnext.asynciterable"]
   },
   "include": ["src/**/*"],

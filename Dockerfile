@@ -2,7 +2,7 @@ FROM node:12.9
 
 LABEL maintainer="Douglas Pires Vilela da Silva <douglas.pires@live.com>"
 
-WORKDIR /app
+WORKDIR /
 
 COPY . .
 

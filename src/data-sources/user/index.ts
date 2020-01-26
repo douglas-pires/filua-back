@@ -1,16 +1,16 @@
 import DataSource from '../base';
-import User, { IUser } from '../../db/schema/user';
+import UserSchema, { User } from '../../db/schema/user';
 
 export default class UserDataSource extends DataSource {
   async getUser(input) {
     const { id } = input;
-    const result = await User.findById(id);
+    const result = await UserSchema.findById(id);
     return result.toObject();
   }
 
   async login(input) {
     const { email, password } = input;
-    const user = (await User.findOne({ email })) as IUser;
+    const user = (await UserSchema.findOne({ email })) as User;
 
     if (!user) return { message: 'User not found' };
 
@@ -28,21 +28,21 @@ export default class UserDataSource extends DataSource {
     throw new Error('Invalid user');
   }
 
-  async register(input: IUser) {
+  async register(input: User) {
     const { name, email, password, confirmPassword } = input;
 
-    const userExists = await User.findOne({
+    const userExists = await UserSchema.findOne({
       email,
     });
 
     if (userExists) throw new Error('The user already exists');
 
-    const user = new User({
+    const user = new UserSchema({
       name,
       email,
       password,
       confirmPassword,
-    }) as IUser;
+    }) as User;
 
     return user.save();
   }

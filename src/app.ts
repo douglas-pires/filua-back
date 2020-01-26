@@ -9,7 +9,9 @@ import cors from 'cors';
 
 const { typeDefs, resolvers } = require('./hooks/schema');
 
-dotenv.config();
+dotenv.config({
+  path: `./.env.${process.env.NODE_ENV}`,
+});
 mongoConnection();
 
 const app = express();

@@ -1,4 +1,4 @@
-FROM node:12.9
+FROM douglaspires/filua-back:latest
 
 LABEL maintainer="Douglas Pires Vilela da Silva <douglas.pires@live.com>"
 

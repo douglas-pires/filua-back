@@ -1,12 +1,11 @@
-version: "3.7"
-- image: circleci/node:12.9
+version: '3.7'
+
 services:
   db:
     image: mongo:4.2.0
     restart: always
     ports:
       - 27017:27017
-
   filuaback:
     build:
       dockerfile: Dockerfile

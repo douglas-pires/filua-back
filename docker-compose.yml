@@ -8,6 +8,7 @@ services:
       - 27017:27017
   filuaback:
     build:
+      context: ./
       dockerfile: Dockerfile
       network: host
     image: douglaspires/filua-back:latest

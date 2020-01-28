@@ -8,6 +8,10 @@ export default class UserDataSource extends DataSource {
     return result.toObject();
   }
 
+  async a () {
+    return 0
+  }
+
   async login(input) {
     const { email, password } = input;
     const user = (await UserSchema.findOne({ email })) as User;

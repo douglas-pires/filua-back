@@ -11,6 +11,10 @@ export default class ProductDataSource extends DataSourceMongo {
     return this.findOne({ _id: id });
   }
 
+  addProducts(products) {
+    return this.insertMany(products)
+  }
+
   addProduct(input) {
     const { name, image, price, categoryTree, partnerUrl, partner } = input;
 

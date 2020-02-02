@@ -7,7 +7,7 @@ router.post('/products', async (req, res) => {
   const products = req.body
   try {
     const dataSource = new ProductDataSource(Product)
-    const result = await dataSource.addProducts(products)
+    const result = await dataSource.addProducts(JSON.parse(products))
     res.send(result)
   } catch (error) {
     res.send(error)

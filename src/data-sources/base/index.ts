@@ -14,6 +14,10 @@ export default class DataSourceMongo extends DataSource {
     return this.model.findOne(filter);
   }
 
+  protected async insertMany(documents: Document[]) {
+    return this.model.insertMany(documents)
+  }
+
   protected async find({ first, after } = { first: 24, after: null }) {
     let options = null;
     if (after) options = { _id: { $gt: after } };

@@ -1,3 +1,4 @@
 import bucket from './bucket';
+import products from './products'
 
-export { bucket };
+export { bucket, products };

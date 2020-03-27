@@ -4,7 +4,7 @@ import mongoConnection from './db';
 import { ApolloServer } from 'apollo-server-express';
 import errors from './hooks/errors';
 import dataSources from './data-sources';
-import { bucket } from './routes';
+import { bucket, products } from './routes';
 import cors from 'cors';
 
 const { typeDefs, resolvers } = require('./hooks/schema');
@@ -19,6 +19,7 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use('/', bucket);
+app.use('/', products);
 
 const server = new ApolloServer({
   playground: true,
